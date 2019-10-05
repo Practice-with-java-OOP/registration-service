@@ -1,0 +1,76 @@
+spring:
+  application:
+    name: registration-service
+
+  output:
+    ansi:
+      enabled: detect
+
+  #datasource
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/registration_service?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password: root123456
+  #jpa
+  jpa:
+    #    show-sql: true
+    #    generate-ddl: true
+    #    database-platform: "org.hibernate.dialect.MySQL5InnoDBDialect"
+    #    hibernate:
+    #      ddl-auto: update
+    open-in-view: true
+    show_sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        hbm2ddl:
+          auto: update
+        jdbc:
+          batch_size: 200
+          batch_versioned_data: true
+        order_inserts: true
+        order_updates: true
+        generate_statistics: true
+        use_sql_comments: true
+        format_sql: true
+        enable_lazy_load_no_trans: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+#port
+server:
+  port: 8081
+
+#eureka
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    registryFetchIntervalSeconds: 5
+#    serviceUrl:
+#      defaultZone: "http://localhost:8239/eureka/"
+#  instance:
+#    health-check-url-path: "/actuator/health"
+#    lease-renewal-interval-in-seconds: 10
+#    metadata-map:
+#      startup: ${random.int}
+#    prefer-ip-address: true
+
+
+#jwt
+app:
+  jwt:
+    secret: 5d66670787ff43778785318f5a12f8c0
+    avlPeriod: 24h # 24h
+    header: Authorization
+    tokenPrefix: Bearer
+
+
+debug: true
