@@ -6,6 +6,9 @@ spring:
     ansi:
       enabled: detect
 
+  messages:
+    basename: i18n/messages
+
   #datasource
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
