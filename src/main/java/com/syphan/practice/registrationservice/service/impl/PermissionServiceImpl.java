@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@org.apache.dubbo.config.annotation.Service
 public class PermissionServiceImpl extends BaseServiceImpl<Permission, Integer> implements PermissionService {
 
     @Autowired

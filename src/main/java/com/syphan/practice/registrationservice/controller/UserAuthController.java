@@ -7,6 +7,7 @@ import com.syphan.practice.registrationservice.security.JwtTokenProperties;
 import com.syphan.practice.registrationservice.security.JwtTokenProvider;
 import com.syphan.practice.registrationservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
