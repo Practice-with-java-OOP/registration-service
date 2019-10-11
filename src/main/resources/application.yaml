@@ -15,13 +15,10 @@ spring:
     url: jdbc:mysql://localhost:3306/registration_service?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
     username: root
     password: root123456
+
+
   #jpa
   jpa:
-    #    show-sql: true
-    #    generate-ddl: true
-    #    database-platform: "org.hibernate.dialect.MySQL5InnoDBDialect"
-    #    hibernate:
-    #      ddl-auto: update
     open-in-view: true
     show_sql: true
     properties:
@@ -51,6 +48,47 @@ spring:
 #port
 server:
   port: 8081
+
+
+dubbo:
+  metadata-report:
+    address: zookeeper://127.0.0.1:2181
+  scan:
+    base-packages: com.syphan.practice.registrationservice.service.impl
+  protocol:
+    serialization: protostuff
+    name: dubbo
+    port: 20840
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    client: curator
+    simplified: true
+  provider:
+    timeout: 60000
+    validation: true
+    filter: tracing
+  consumer:
+    timeout: 60000
+    check: false
+    validation: true
+    filter: tracing
+
+#logging:
+#  file:
+#    max-size: 100MB
+#    max-history: 15
+#  level:
+#    org:
+#      apache:
+#        dubbo: debug
+#      hibernate:
+#        SQL: debug
+#        type:
+#          descriptor:
+#            sql:
+#              BasicBinder: trace
+#    com:
+#      jidian: debug
 
 #eureka
 #eureka:

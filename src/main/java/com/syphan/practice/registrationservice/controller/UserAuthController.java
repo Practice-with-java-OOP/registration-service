@@ -1,11 +1,11 @@
 package com.syphan.practice.registrationservice.controller;
 
-import com.syphan.practice.commonservice.util.OpenApiWithDataResponse;
+import com.syphan.practice.commonservice.util.EntityValidationUtils;
+import com.syphan.practice.commonservice.util.response.OpenApiWithDataResponse;
 import com.syphan.practice.registrationservice.dto.UserSignIn;
 import com.syphan.practice.registrationservice.security.JwtTokenProperties;
 import com.syphan.practice.registrationservice.security.JwtTokenProvider;
 import com.syphan.practice.registrationservice.service.UserService;
-import com.syphan.practice.registrationservice.util.EntityValidationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
