@@ -4,6 +4,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 CREATE TABLE `user`
 (
     `id`          int(11)      NOT NULL AUTO_INCREMENT,
+    `version`   int(11)      NOT NULL,
     `create_at`   datetime     NOT NULL,
     `update_at`   datetime     NOT NULL,
     `avatar`      varchar(255) DEFAULT NULL,
@@ -18,6 +19,7 @@ CREATE TABLE `user`
 CREATE TABLE `role`
 (
     `id`        int(11)      NOT NULL,
+    `version`   int(11)      NOT NULL,
     `create_at` datetime     NOT NULL,
     `update_at` datetime     NOT NULL,
     `code`      varchar(128) NOT NULL,
@@ -29,6 +31,7 @@ CREATE TABLE `role`
 CREATE TABLE `permission`
 (
     `id`        int(11)      NOT NULL,
+    `version`   int(11)      NOT NULL,
     `create_at` datetime     NOT NULL,
     `update_at` datetime     NOT NULL,
     `code`      varchar(128) NOT NULL,
@@ -58,11 +61,6 @@ CREATE TABLE `roles_permissions`
     CONSTRAINT `FK9h2vewsqh8luhfq71xokh4who` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
-
-INSERT INTO registration_service.`user`
-(avatar, create_at, full_name, password, update_at, username, user_social)
-VALUES (NULL, CURRENT_TIMESTAMP, NULL, '$2a$10$hwm3jwNcsFhIfqeOKHAwJOpo1FaJFL8jjA9w0WflyTrG55km7jpU6',
-        CURRENT_TIMESTAMP, '0988123123', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
 

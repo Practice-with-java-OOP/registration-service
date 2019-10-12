@@ -32,7 +32,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         hbm2ddl:
-          auto: update
+          auto: none
         jdbc:
           batch_size: 200
           batch_versioned_data: true
