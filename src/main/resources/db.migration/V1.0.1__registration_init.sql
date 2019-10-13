@@ -11,6 +11,8 @@ CREATE TABLE `user`
     `full_name`   varchar(64)  DEFAULT NULL,
     `password`    varchar(128) NOT NULL,
     `username`    varchar(128) NOT NULL,
+    `email`    varchar(128) DEFAULT NULL,
+    `phone_number`    varchar(128) DEFAULT NULL,
     `user_social` varchar(128) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
@@ -18,7 +20,7 @@ CREATE TABLE `user`
 
 CREATE TABLE `role`
 (
-    `id`        int(11)      NOT NULL,
+    `id`        int(11)      NOT NULL AUTO_INCREMENT,
     `version`   int(11)      NOT NULL,
     `create_at` datetime     NOT NULL,
     `update_at` datetime     NOT NULL,
@@ -30,7 +32,7 @@ CREATE TABLE `role`
 
 CREATE TABLE `permission`
 (
-    `id`        int(11)      NOT NULL,
+    `id`        int(11)      NOT NULL AUTO_INCREMENT,
     `version`   int(11)      NOT NULL,
     `create_at` datetime     NOT NULL,
     `update_at` datetime     NOT NULL,

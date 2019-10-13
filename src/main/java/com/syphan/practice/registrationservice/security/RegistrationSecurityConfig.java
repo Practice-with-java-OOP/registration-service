@@ -15,7 +15,8 @@ public class RegistrationSecurityConfig extends BaseSecurityConfig {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers(
                 "/api/v1/auth/sign-in",
-                String.format("%s%s", environment.getProperty("spring.boot.admin.context-path", "/registration-service"), "/**")
+                String.format(environment.getProperty("spring.boot.admin.context-path", "/registration-service"), "/**"),
+                "/api/v1/users"
         ).permitAll();
         super.configure(http);
     }

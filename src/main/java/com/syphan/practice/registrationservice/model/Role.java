@@ -34,21 +34,12 @@ public class Role extends BaseEntity {
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "roles_permission",
+            name = "roles_permissions",
             joinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
-                    name = "privilege_id", referencedColumnName = "id"))
+                    name = "permission_id", referencedColumnName = "id"))
     private Set<Permission> permissions = new HashSet<>();
-
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "roles_users",
-//            joinColumns = @JoinColumn(
-//                    name = "role_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "user_id", referencedColumnName = "id"))
-//    private Set<User> users = new HashSet<>();
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")

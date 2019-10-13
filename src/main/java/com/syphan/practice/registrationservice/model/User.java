@@ -38,6 +38,11 @@ public class User extends BaseEntity {
     @NotNull
     private String password;
 
+    private String email;
+
+    @Column(name = "phone_number")
+    private String phoneNum;
+
     private String avatar;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
