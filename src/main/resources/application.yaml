@@ -9,13 +9,6 @@ spring:
   messages:
     basename: i18n/messages
 
-#  boot:
-#    admin:
-#      context-path: /registration-service
-#      notify:
-#        pagerduty:
-#          client-url: http://localhost:${server.port}/${spring.boot.admin.context-path}
-
   #datasource
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -84,22 +77,22 @@ dubbo:
     validation: true
     filter: tracing
 
-#logging:
-#  file:
-#    max-size: 100MB
-#    max-history: 15
-#  level:
-#    org:
-#      apache:
-#        dubbo: debug
-#      hibernate:
-#        SQL: debug
-#        type:
-#          descriptor:
-#            sql:
-#              BasicBinder: trace
-#    com:
-#      jidian: debug
+logging:
+  file:
+    max-size: 100MB
+    max-history: 15
+  level:
+    org:
+      apache:
+        dubbo: debug
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace
+    com:
+      jidian: debug
 
 #eureka
 #eureka:
@@ -114,15 +107,5 @@ dubbo:
 #    metadata-map:
 #      startup: ${random.int}
 #    prefer-ip-address: true
-
-
-#jwt
-#app:
-#  jwt:
-#    secret: 5d66670787ff43778785318f5a12f8c0
-#    avlPeriod: 24h # 24h
-#    header: Authorization
-#    tokenPrefix: Bearer
-
 
 debug: true
