@@ -10,4 +10,6 @@ public interface UserService extends BaseService<User, Integer> {
     String sendUserSignUpMailCaptcha(String email) throws BIZException;
 
     User signUp(UserCreateDto data) throws BIZException;
+
+    User findByUsername(String username) throws BIZException;
 }

@@ -22,6 +22,7 @@ import java.util.Set;
 @org.apache.dubbo.config.annotation.Service
 public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements UserService {
 
+    @Autowired
     private UserRepository repository;
 
     @Autowired
@@ -64,8 +65,13 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
         user.setEmail(data.getEmail());
         user.setPhoneNum(data.getPhoneNum());
         roles.add(getDefaultUserRole());
-        user.setRoles(roles);
+//        user.setRoles(roles);
         return repository.save(user);
+    }
+
+    @Override
+    public User findByUsername(String username) throws BIZException {
+        return repository.findByUsername(username);
     }
 
     private Role getDefaultUserRole() {

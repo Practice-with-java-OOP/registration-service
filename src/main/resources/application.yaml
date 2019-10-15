@@ -9,12 +9,12 @@ spring:
   messages:
     basename: i18n/messages
 
-  boot:
-    admin:
-      context-path: /registration-service
-      notify:
-        pagerduty:
-          client-url: http://localhost:${server.port}/${spring.boot.admin.context-path}
+#  boot:
+#    admin:
+#      context-path: /registration-service
+#      notify:
+#        pagerduty:
+#          client-url: http://localhost:${server.port}/${spring.boot.admin.context-path}
 
   #datasource
   datasource:
@@ -117,12 +117,12 @@ dubbo:
 
 
 #jwt
-app:
-  jwt:
-    secret: 5d66670787ff43778785318f5a12f8c0
-    avlPeriod: 24h # 24h
-    header: Authorization
-    tokenPrefix: Bearer
+#app:
+#  jwt:
+#    secret: 5d66670787ff43778785318f5a12f8c0
+#    avlPeriod: 24h # 24h
+#    header: Authorization
+#    tokenPrefix: Bearer
 
 
 debug: true

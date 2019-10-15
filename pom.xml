@@ -26,6 +26,7 @@
             <groupId>com.syphan.practice</groupId>
             <artifactId>common-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <optional>true</optional>
             <exclusions>
                 <exclusion>
                     <artifactId>javassist</artifactId>

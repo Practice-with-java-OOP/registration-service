@@ -45,7 +45,7 @@ public class User extends BaseEntity {
 
     private String avatar;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "roles_users",
             joinColumns = @JoinColumn(

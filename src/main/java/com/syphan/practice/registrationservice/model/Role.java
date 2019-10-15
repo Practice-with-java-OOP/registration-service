@@ -7,13 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,7 +32,7 @@ public class Role extends BaseEntity {
     @NotNull
     private String code;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "roles_permissions",
             joinColumns = @JoinColumn(
@@ -43,5 +43,6 @@ public class Role extends BaseEntity {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
+    @Transient
     private Set<User> users = new HashSet<>();
 }
