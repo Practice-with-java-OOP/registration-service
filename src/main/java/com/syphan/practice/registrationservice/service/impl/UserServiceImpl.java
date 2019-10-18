@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -57,15 +58,23 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
         }
 
         User user = new User();
-        Set<Role> roles = new HashSet<>();
         user.setUsername(data.getUsername());
         user.setPassword(new BCryptPasswordEncoder().encode(data.getPassword()));
         user.setFullName(data.getFullName());
         user.setAvatar(GenerateAvatarUtils.generate(data.getEmail()));
         user.setEmail(data.getEmail());
         user.setPhoneNum(data.getPhoneNum());
-        roles.add(getDefaultUserRole());
-//        user.setRoles(roles);
+
+        Set<Role> roles = new HashSet<>();
+        if (!data.getRoleIds().isEmpty()) {
+            List<Role> roleList = roleRepository.findAllById(data.getRoleIds());
+            if (roleList.size() != new HashSet<>(data.getRoleIds()).size()) throw BIZException.buildBIZException(ErrType.NOT_FOUND,
+                    "role.do.not.existed", String.format("%s%s%s" ,"Role with id in list Id[ ", data.getRoleIds(), "] do not existed"));
+            roles.addAll(roleList);
+        } else {
+            roles.add(getDefaultUserRole());
+        }
+        user.setRoles(roles);
         return repository.save(user);
     }
 
