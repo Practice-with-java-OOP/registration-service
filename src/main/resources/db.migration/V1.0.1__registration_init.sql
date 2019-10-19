@@ -42,10 +42,10 @@ CREATE TABLE `permission`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
-CREATE TABLE `roles_users`
+CREATE TABLE `users_roles`
 (
-    `role_id` int(11) NOT NULL,
     `user_id` int(11) NOT NULL,
+    `role_id` int(11) NOT NULL,
     PRIMARY KEY (`role_id`, `user_id`),
     KEY `FK8ahp0knpd98f8urotdnmqoorw` (`user_id`),
     CONSTRAINT `FK8ahp0knpd98f8urotdnmqoorw` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),

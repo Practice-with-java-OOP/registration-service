@@ -9,6 +9,7 @@ import com.syphan.practice.registrationservice.repository.PermissionRepository;
 import com.syphan.practice.registrationservice.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @org.apache.dubbo.config.annotation.Service
@@ -22,6 +23,7 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission, Integer> 
         this.repository = repository;
     }
 
+    @Transactional
     @Override
     public Permission create(PermissionCreateDto data) throws BIZException {
         if (repository.findByCode(data.getCode().trim()) != null) throw BIZException.buildBIZException(

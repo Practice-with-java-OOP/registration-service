@@ -11,6 +11,7 @@ import com.syphan.practice.registrationservice.repository.RoleRepository;
 import com.syphan.practice.registrationservice.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,6 +31,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements R
         this.repository = repository;
     }
 
+    @Transactional
     @Override
     public Role create(RoleCreateDto data) throws BIZException {
         if (repository.findByCode(data.getCode().trim()) != null) throw BIZException.buildBIZException(
