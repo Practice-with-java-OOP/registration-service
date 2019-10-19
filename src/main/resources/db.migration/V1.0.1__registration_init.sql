@@ -12,7 +12,7 @@ CREATE TABLE `user`
     `password`    varchar(128) NOT NULL,
     `username`    varchar(128) NOT NULL,
     `email`    varchar(128) DEFAULT NULL,
-    `phone_number`    varchar(128) DEFAULT NULL,
+    `phone_number`    varchar(128) NOT NULL,
     `user_social` varchar(128) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
