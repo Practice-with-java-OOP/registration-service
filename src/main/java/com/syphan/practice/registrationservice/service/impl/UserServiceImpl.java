@@ -4,13 +4,15 @@ import com.syphan.practice.commonservice.exception.BIZException;
 import com.syphan.practice.commonservice.model.enumclass.ErrType;
 import com.syphan.practice.commonservice.service.impl.BaseServiceImpl;
 import com.syphan.practice.commonservice.util.GenerateAvatarUtils;
-import com.syphan.practice.registrationservice.dto.UserCreateDto;
+import com.syphan.practice.dto.registration.UserCreateDto;
+import com.syphan.practice.houseservice.service.BoardingHouseService;
 import com.syphan.practice.registrationservice.model.Role;
 import com.syphan.practice.registrationservice.model.User;
 import com.syphan.practice.registrationservice.repository.RoleRepository;
 import com.syphan.practice.registrationservice.repository.UserRepository;
 import com.syphan.practice.registrationservice.service.UserService;
 import com.syphan.practice.registrationservice.util.Utils;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,9 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Reference
+    private BoardingHouseService houseService;
 
     @Autowired
     public UserServiceImpl(UserRepository repository) {
@@ -61,15 +66,16 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
         user.setUsername(data.getUsername());
         user.setPassword(new BCryptPasswordEncoder().encode(data.getPassword()));
         user.setFullName(data.getFullName());
-        user.setAvatar(GenerateAvatarUtils.generate(data.getEmail()));
+        user.setAvatar(data.getAvatar() != null ? data.getAvatar() : GenerateAvatarUtils.generate(data.getEmail()));
         user.setEmail(data.getEmail());
         user.setPhoneNum(data.getPhoneNum());
 
         Set<Role> roles = new HashSet<>();
         if (!data.getRoleIds().isEmpty()) {
             List<Role> roleList = roleRepository.findAllById(data.getRoleIds());
-            if (roleList.size() != new HashSet<>(data.getRoleIds()).size()) throw BIZException.buildBIZException(ErrType.NOT_FOUND,
-                    "role.do.not.existed", String.format("%s%s%s" ,"Role with id in list Id[ ", data.getRoleIds(), "] do not existed"));
+            if (roleList.size() != new HashSet<>(data.getRoleIds()).size())
+                throw BIZException.buildBIZException(ErrType.NOT_FOUND,
+                        "role.do.not.existed", String.format("%s%s%s", "Role with id in list Id[ ", data.getRoleIds(), "] do not existed"));
             roles.addAll(roleList);
         } else {
             roles.add(getDefaultUserRole());

@@ -3,7 +3,7 @@ package com.syphan.practice.registrationservice.service.impl;
 import com.syphan.practice.commonservice.exception.BIZException;
 import com.syphan.practice.commonservice.model.enumclass.ErrType;
 import com.syphan.practice.commonservice.service.impl.BaseServiceImpl;
-import com.syphan.practice.registrationservice.dto.PermissionCreateDto;
+import com.syphan.practice.dto.registration.PermissionCreateDto;
 import com.syphan.practice.registrationservice.model.Permission;
 import com.syphan.practice.registrationservice.repository.PermissionRepository;
 import com.syphan.practice.registrationservice.service.PermissionService;

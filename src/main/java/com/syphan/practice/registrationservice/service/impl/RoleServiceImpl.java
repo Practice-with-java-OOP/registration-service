@@ -3,7 +3,7 @@ package com.syphan.practice.registrationservice.service.impl;
 import com.syphan.practice.commonservice.exception.BIZException;
 import com.syphan.practice.commonservice.model.enumclass.ErrType;
 import com.syphan.practice.commonservice.service.impl.BaseServiceImpl;
-import com.syphan.practice.registrationservice.dto.RoleCreateDto;
+import com.syphan.practice.dto.registration.RoleCreateDto;
 import com.syphan.practice.registrationservice.model.Permission;
 import com.syphan.practice.registrationservice.model.Role;
 import com.syphan.practice.registrationservice.repository.PermissionRepository;
@@ -21,6 +21,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements R
 
     private RoleRepository repository;
 
+    @Autowired
     private PermissionRepository permissionRepository;
 
     @Autowired
