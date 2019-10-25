@@ -1,0 +1,1 @@
+./mvnw package && java -jar registration-service-rest/target/registration-service-rest-0.0.1-SNAPSHOT.jar
