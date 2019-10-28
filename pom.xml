@@ -91,12 +91,12 @@
                 <repository>
                     <id>nexus-release</id>
                     <name>maven-releases</name>
-                    <url>http://localhost:8800/repository/maven-releases/</url>
+                    <url>http://192.168.10.117:8800/repository/maven-releases/</url>
                 </repository>
                 <snapshotRepository>
                     <id>nexus-snapshot</id>
                     <name>maven-snapshots</name>
-                    <url>http://localhost:8800/repository/maven-snapshots/</url>
+                    <url>http://192.168.10.117:8800/repository/maven-snapshots/</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>

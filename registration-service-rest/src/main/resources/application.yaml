@@ -12,7 +12,7 @@ spring:
   #datasource
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/registration_service?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/registration_service?autoReconnect=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
     username: root
     password: root123456
 
@@ -46,7 +46,7 @@ spring:
       path: /h2-console
 
   zipkin:
-    base-url: http://localhost:9411/
+    base-url: http://192.168.10.117:9411/
 
 #port
 server:
